@@ -77,7 +77,7 @@ const FacebookIcon = ({ className }: { className?: string }) => (
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 12c0 1.74.44 3.37 1.23 4.78L2 22l5.33-1.38c1.37.71 2.93 1.11 4.58 1.11h.01c5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.82-9.91-9.82zM17.2 15.25c-.21 0-.46-.07-.72-.18-.54-.22-1.04-.54-1.2-.72-.15-.17-.28-.36-.42-.53-.13-.17-.28-.34-.42-.51s-.29-.34-.44-.51c-.15-.17-.31-.34-.46-.51-.15-.17-.32-.34-.48-.51s-.32-.34-.49-.51c-.17-.17-.35-.34-.52-.51l-.14-.14s-.14-.14-.28-.28c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42l-.14-.14c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-1.12-1.12-2.24-2.24-3.36-3.36C3.06 6.37 4.1 5.25 4.1 5.25s1.12 1.12 1.12 1.12l.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42.28.28.42.42l.14.14s.14.14.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42l.14.14c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42c.15.15.29.3.44.44s.29.3.44.44l.14.14c.15.15.29.3.44.44s.29.3.44.44l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.1-4.1-3.3-3.3-1.42 1.42z" />
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 12c0 1.74.44 3.37 1.23 4.78L2 22l5.33-1.38c1.37.71 2.93 1.11 4.58 1.11h.01c5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.82-9.91-9.82zM17.2 15.25c-.21 0-.46-.07-.72-.18-.54-.22-1.04-.54-1.2-.72-.15-.17-.28-.36-.42-.53-.13-.17-.28-.34-.42-.51s-.29-.34-.44-.51c-.15-.17-.31-.34-.46-.51-.15-.17-.32-.34-.48-.51s-.32-.34-.49-.51c-.17-.17-.35-.34-.52-.51l-.14-.14s-.14-.14-.28-.28c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42l-.14-.14c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-1.12-1.12-2.24-2.24-3.36-3.36C3.06 6.37 4.1 5.25 4.1 5.25s1.12 1.12 1.12 1.12l.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42.28.28.42.42l.14.14s.14.14.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42l.14.14c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42c.15.15.29.3.44.44s.29.3.44.44l.14.14c.15.15.29.3.44.44s.29.3.44.44l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.1-4.1-3.3-3.3-1.42 1.42z" />
     </svg>
 );
 
@@ -149,46 +149,36 @@ const ButterflyIcon = ({ className }: { className?: string }) => (
 
 
 // --- COMPONENT DEFINITIONS ---
+type NavClickHandler = (e: React.MouseEvent<HTMLAnchorElement>) => void;
 
-const Header = () => {
-    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-        e.preventDefault();
-        const targetId = e.currentTarget.getAttribute('href')?.substring(1);
-        if (targetId) {
-            const targetElement = document.getElementById(targetId);
-            if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    };
-
+const Header = ({ onNavClick }: { onNavClick: NavClickHandler }) => {
     return (
         <header className="bg-brand-dark bg-opacity-50 text-white p-4 fixed top-0 left-0 right-0 z-50 backdrop-blur-sm transition-all duration-300">
             <div className="container mx-auto flex justify-between items-center">
-                 <a href="#accueil" onClick={handleNavClick} className="text-3xl font-display font-bold">
+                 <a href="#accueil" onClick={onNavClick} className="text-3xl font-display font-bold">
                     TOURMA-LINE
                 </a>
                 <nav className="hidden md:flex space-x-6">
-                    <a href="#accueil" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Accueil</a>
-                    <a href="#services" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Mes Services</a>
-                    <a href="#formules" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Formules</a>
-                    <a href="#bienfaits" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Bienfaits</a>
-                    <a href="#tarifs" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Tarifs</a>
-                    <a href="#rendezvous" onClick={handleNavClick} className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-2 px-4 rounded-full transition-colors">Prendre RDV</a>
+                    <a href="#accueil" onClick={onNavClick} className="hover:text-brand-purple transition-colors">Accueil</a>
+                    <a href="#services" onClick={onNavClick} className="hover:text-brand-purple transition-colors">Mes Services</a>
+                    <a href="#formules" onClick={onNavClick} className="hover:text-brand-purple transition-colors">Formules</a>
+                    <a href="#bienfaits" onClick={onNavClick} className="hover:text-brand-purple transition-colors">Bienfaits</a>
+                    <a href="#tarifs" onClick={onNavClick} className="hover:text-brand-purple transition-colors">Tarifs</a>
+                    <a href="#rendezvous" onClick={onNavClick} className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-2 px-4 rounded-full transition-colors">Prendre RDV</a>
                 </nav>
             </div>
         </header>
     );
 };
 
-const Hero = () => {
+const Hero = ({ onNavClick }: { onNavClick: NavClickHandler }) => {
     return (
         <section id="accueil" className="relative h-screen flex items-center justify-center text-center text-white bg-hero-pattern bg-cover bg-center">
             <div className="absolute inset-0 bg-black opacity-50"></div>
             <div className="relative z-10 p-4 animate-fadeInUp">
                 <h2 className="text-5xl md:text-7xl font-display font-bold leading-tight mb-4 text-shadow-lg">Révélez votre potentiel et illuminez votre chemin de vie.</h2>
                 <p className="text-lg md:text-2xl mb-8 max-w-3xl mx-auto font-light">Guidance personnalisée par la numérologie, la cartomancie et les soins énergétiques Lahochi.</p>
-                <a href="#services" className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 animate-pulse inline-block">Découvrir mes accompagnements</a>
+                <a href="#formules" onClick={onNavClick} className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 animate-pulse inline-block">Découvrir mes accompagnements</a>
             </div>
         </section>
     );
@@ -729,11 +719,22 @@ const Chatbot = () => {
 const App = () => {
   const [activeTab, setActiveTab] = useState('numerology');
 
+   const handleNavClick: NavClickHandler = (e) => {
+        e.preventDefault();
+        const targetId = e.currentTarget.getAttribute('href')?.substring(1);
+        if (targetId) {
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    };
+
   return (
     <div className="bg-brand-lilas text-brand-dark font-sans">
-      <Header />
+      <Header onNavClick={handleNavClick} />
       <main>
-        <Hero />
+        <Hero onNavClick={handleNavClick} />
         <Welcome />
         <Benefits />
         <Services activeTab={activeTab} setActiveTab={setActiveTab} />
