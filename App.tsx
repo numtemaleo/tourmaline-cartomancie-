@@ -29,7 +29,7 @@ const FacebookIcon = ({ className }: { className?: string }) => (
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 12c0 1.74.44 3.37 1.23 4.78L2 22l5.33-1.38c1.37.71 2.93 1.11 4.58 1.11h.01c5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.82-9.91-9.82zM17.2 15.25c-.21 0-.46-.07-.72-.18-.54-.22-1.04-.54-1.2-.72-.15-.17-.28-.36-.42-.53-.13-.17-.28-.34-.42-.51s-.29-.34-.44-.51c-.15-.17-.31-.34-.46-.51-.15-.17-.32-.34-.48-.51s-.32-.34-.49-.51c-.17-.17-.35-.34-.52-.51l-.14-.14s-.14-.14-.28-.28c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42l-.14-.14c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-1.12-1.12-2.24-2.24-3.36-3.36C3.06 6.37 4.1 5.25 4.1 5.25s1.12 1.12 1.12 1.12l.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42.28.28.42.42l.14.14s.14.14.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42l.14.14c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42c.15.15.29.3.44.44s.29.3.44.44l.14.14c.15.15.29.3.44.44s.29.3.44.44l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.1-4.1-3.3-3.3-1.42 1.42z" />
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 12c0 1.74.44 3.37 1.23 4.78L2 22l5.33-1.38c1.37.71 2.93 1.11 4.58 1.11h.01c5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.82-9.91-9.82zM17.2 15.25c-.21 0-.46-.07-.72-.18-.54-.22-1.04-.54-1.2-.72-.15-.17-.28-.36-.42-.53-.13-.17-.28-.34-.42-.51s-.29-.34-.44-.51c-.15-.17-.31-.34-.46-.51-.15-.17-.32-.34-.48-.51s-.32-.34-.49-.51c-.17-.17-.35-.34-.52-.51l-.14-.14s-.14-.14-.28-.28c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42l-.14-.14c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-1.12-1.12-2.24-2.24-3.36-3.36C3.06 6.37 4.1 5.25 4.1 5.25s1.12 1.12 1.12 1.12l.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42.28.28.42.42l.14.14s.14.14.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42l.14.14c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42c.15.15.29.3.44.44s.29.3.44.44l.14.14c.15.15.29.3.44.44s.29.3.44.44l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.1-4.1-3.3-3.3-1.42 1.42z" />
     </svg>
 );
 
@@ -231,7 +231,7 @@ const SessionFlow = () => {
                     </div>
                      <div className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-brand-purple">
                         <h3 className="text-2xl font-display text-brand-dark mb-3">À domicile</h3>
-                        <p className="text-gray-600 mb-4">Pour votre confort, je me déplace chez vous dans les environs de Gerponville, y compris des communes comme Valmont et Fécamp.</p>
+                        <p className="text-gray-600 mb-4">Je peux me déplacer à votre domicile dans les environs de Gerponville (Valmont, Fécamp, etc.). Les séances peuvent également avoir lieu à mon domicile à Gerponville, sur rendez-vous.</p>
                     </div>
                     <div className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-brand-purple">
                         <h3 className="text-2xl font-display text-brand-dark mb-3">Au cabinet</h3>
@@ -352,7 +352,7 @@ const Footer = () => {
                       <a href="https://www.facebook.com/tourma.line.534540" target="_blank" rel="noopener noreferrer" className="hover:text-brand-purple transition-colors"><FacebookIcon className="w-6 h-6"/></a>
                  </div>
                 <p className="text-sm text-gray-400">Tourmaline, 76540 Gerponville | Siret : 93116533600013</p>
-                <p className="text-sm text-gray-400 mt-1">Intervention à domicile sur le secteur Gerponville, Valmont, Fécamp.</p>
+                <p className="text-sm text-gray-400 mt-1">Intervention à domicile sur le secteur Gerponville, Valmont, Fécamp, Cany-Barville, Ourville-en-Caux.</p>
                 <p className="text-sm text-gray-400 mt-1">Merci de votre visite.</p>
                  <a href="https://www.google.com/search?sca_esv=b1b93c191aaa47d3&sxsrf=AE3TifPYZY4KkqMWnY5gZGk3n-vOMMPhAg:1762975647931&q=Tourma-Line+Line+Simon+Num%C3%A9rologie+Cartomancie+et+Soins+%C3%A9nerg%C3%A9tiques+LAHOCHI&si=AMgyJEs9DArPE9xmb5yVYVjpG4jqWDEKSIpCRSjmm88XZWnGNboYSYaVnHI8Cn4IKluKbWRXYq-r0WYB-1748A7mqdXrZUulOMOySxFRN-q-rlVeZj6ypC5qIaStj2zXV6nogPxZwVFtXxigmA-dqJHtBVRMAectv_K5Xo0VYmewelH3do5M-dAjT6PwxvoziBwKDnAPsX9naiebeBv7x2A75ft3kXZHUg%3D%D&sa=X&ved=2ahUKExiFifiJrO2QAxW0NvsDHRiNLegQ_coHegQIKRAB" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-brand-purple transition-colors mt-2 inline-block">
                     Voir sur Google Business
@@ -381,7 +381,7 @@ const Chatbot = () => {
   2.  **Soin énergétique LAHOCHI (50€):** A high-frequency energy healing method, stronger than Reiki. It rebalances chakras, releases blockages, reduces stress, and promotes deep physical and emotional well-being. (Available: at home, remotely).
 - **Locations & How Sessions Work:**
   - **À distance (Remote):** Flexible sessions via Phone, Video call, or Messenger.
-  - **À domicile (At home):** Serving the area around Gerponville, including towns like Valmont and Fécamp.
+  - **À domicile (At home):** Serving the area around Gerponville, including towns like Valmont, Fécamp, Cany-Barville, and Ourville-en-Caux.
   - **Au cabinet (At the cabinet):** A serene space at "161 rue Souveraine, 76450 Saint-Riquier-ès-Plains". By appointment only.
 - **Client Testimonials (To be used naturally in conversation):**
   - **PATRICIA FATRAS:** "J’ai eu la chance de croiser Touma-Line... elle a su me décrire avec une justesse..."
@@ -495,7 +495,7 @@ const Chatbot = () => {
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 placeholder="Posez votre question..."
-                                className="flex-1 p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-brand-purple"
+                                className="flex-1 p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-brand-purple bg-white text-brand-dark placeholder-gray-500"
                                 disabled={isLoading}
                             />
                             <button type="submit" className="bg-brand-purple text-white p-3 rounded-full hover:bg-opacity-80 disabled:bg-gray-400" disabled={isLoading}>
