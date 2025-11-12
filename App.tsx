@@ -2,6 +2,52 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { GoogleGenAI } from '@google/genai';
 
+// --- HELPER COMPONENT for Scroll Animations ---
+type AnimateOnScrollProps = {
+    animationClass?: string;
+    threshold?: number;
+    delay?: number;
+};
+// FIX: Changed component to be of type React.FC to correctly handle React-specific props like `key`.
+const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({ children, animationClass = 'animate-fadeInUp', threshold = 0.1, delay = 0 }) => {
+    const ref = useRef<HTMLDivElement>(null);
+    const [isVisible, setIsVisible] = useState(false);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        setIsVisible(true);
+                        observer.unobserve(entry.target);
+                    }, delay);
+                }
+            },
+            { threshold }
+        );
+
+        const currentRef = ref.current;
+        if (currentRef) {
+            observer.observe(currentRef);
+        }
+
+        return () => {
+            if (currentRef) {
+                observer.unobserve(currentRef);
+            }
+        };
+    }, [threshold, delay]);
+
+    return (
+        <div ref={ref} className={`transition-opacity duration-1000 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={isVisible ? animationClass : ''}>
+                {children}
+            </div>
+        </div>
+    );
+};
+
+
 // --- ICONS (SVG Components) ---
 const HeartHandIcon = ({ className }: { className?: string }) => (
   <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
@@ -29,7 +75,7 @@ const FacebookIcon = ({ className }: { className?: string }) => (
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 12c0 1.74.44 3.37 1.23 4.78L2 22l5.33-1.38c1.37.71 2.93 1.11 4.58 1.11h.01c5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.82-9.91-9.82zM17.2 15.25c-.21 0-.46-.07-.72-.18-.54-.22-1.04-.54-1.2-.72-.15-.17-.28-.36-.42-.53-.13-.17-.28-.34-.42-.51s-.29-.34-.44-.51c-.15-.17-.31-.34-.46-.51-.15-.17-.32-.34-.48-.51s-.32-.34-.49-.51c-.17-.17-.35-.34-.52-.51l-.14-.14s-.14-.14-.28-.28c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42l-.14-.14c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-1.12-1.12-2.24-2.24-3.36-3.36C3.06 6.37 4.1 5.25 4.1 5.25s1.12 1.12 1.12 1.12l.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42.28.28.42.42l.14.14s.14.14.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42l.14.14c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42c.15.15.29.3.44.44s.29.3.44.44l.14.14c.15.15.29.3.44.44s.29.3.44.44l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.1-4.1-3.3-3.3-1.42 1.42z" />
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 12c0 1.74.44 3.37 1.23 4.78L2 22l5.33-1.38c1.37.71 2.93 1.11 4.58 1.11h.01c5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.82-9.91-9.82zM17.2 15.25c-.21 0-.46-.07-.72-.18-.54-.22-1.04-.54-1.2-.72-.15-.17-.28-.36-.42-.53-.13-.17-.28-.34-.42-.51s-.29-.34-.44-.51c-.15-.17-.31-.34-.46-.51-.15-.17-.32-.34-.48-.51s-.32-.34-.49-.51c-.17-.17-.35-.34-.52-.51l-.14-.14s-.14-.14-.28-.28c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42l-.14-.14c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-1.12-1.12-2.24-2.24-3.36-3.36C3.06 6.37 4.1 5.25 4.1 5.25s1.12 1.12 1.12 1.12l.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42.28.28.42.42l.14.14s.14.14.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42l.14.14c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42c.15.15.29.3.44.44s.29.3.44.44l.14.14c.15.15.29.3.44.44s.29.3.44.44l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.1-4.1-3.3-3.3-1.42 1.42z" />
     </svg>
 );
 
@@ -69,6 +115,36 @@ const SendIcon = ({ className }: { className?: string }) => (
     </svg>
 );
 
+// --- FORMULES ICONS ---
+const FeatherIcon = ({ className }: { className?: string }) => (
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12.983 5.168a3.75 3.75 0 015.304 5.304L9.041 21.982a1.875 1.875 0 01-2.652-2.652L12.983 5.168z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 5.25L18.75 2.25" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12.983 5.168L15.333 2.818" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M10.233 7.918L12.583 5.568" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7.483 10.668L9.833 8.318" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4.733 13.418L7.083 11.068" />
+    </svg>
+);
+
+const BalanceIcon = ({ className }: { className?: string }) => (
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18m0-18l-3.75 3.75M12 3l3.75 3.75M12 21l-3.75-3.75M12 21l3.75-3.75M3.75 9h16.5M3.75 15h16.5" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5.625 9c0 5.094 3.32 9.25 7.425 9.25s7.425-4.156 7.425-9.25" />
+    </svg>
+);
+
+const ButterflyIcon = ({ className }: { className?: string }) => (
+    <svg className={className} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.25 4.75c1.5-1.5 3.5-1.5 5 0 1.5 1.5 1.5 3.5 0 5L12 12l-2.25-2.25c-1.5-1.5-1.5-3.5 0-5z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9.25 19.25c1.5 1.5 3.5 1.5 5 0 1.5-1.5 1.5-3.5 0-5L12 12l-2.25 2.25c-1.5 1.5-1.5 3.5 0 5z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 12l-6.5-6.5" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 12l6.5-6.5" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 12l-6.5 6.5" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 12l6.5 6.5" />
+    </svg>
+);
+
 
 // --- COMPONENT DEFINITIONS ---
 
@@ -85,12 +161,13 @@ const Header = () => {
     };
 
     return (
-        <header className="bg-brand-dark bg-opacity-50 text-white p-4 fixed top-0 left-0 right-0 z-50">
+        <header className="bg-brand-dark bg-opacity-50 text-white p-4 fixed top-0 left-0 right-0 z-50 backdrop-blur-sm transition-all duration-300">
             <div className="container mx-auto flex justify-between items-center">
                 <h1 className="text-2xl font-display font-bold text-brand-lilas">TOURMA-LINE</h1>
                 <nav className="hidden md:flex space-x-6">
                     <a href="#accueil" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Accueil</a>
                     <a href="#services" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Mes Services</a>
+                    <a href="#formules" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Formules</a>
                     <a href="#bienfaits" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Bienfaits</a>
                     <a href="#tarifs" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Tarifs</a>
                     <a href="#rendezvous" onClick={handleNavClick} className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-2 px-4 rounded-full transition-colors">Prendre RDV</a>
@@ -104,10 +181,10 @@ const Hero = () => {
     return (
         <section id="accueil" className="relative h-screen flex items-center justify-center text-center text-white bg-hero-pattern bg-cover bg-center">
             <div className="absolute inset-0 bg-black opacity-50"></div>
-            <div className="relative z-10 p-4">
+            <div className="relative z-10 p-4 animate-fadeInUp">
                 <h2 className="text-5xl md:text-7xl font-display font-bold leading-tight mb-4 text-shadow-lg">Révélez votre potentiel et illuminez votre chemin de vie.</h2>
                 <p className="text-lg md:text-2xl mb-8 max-w-3xl mx-auto font-light">Guidance personnalisée par la numérologie, la cartomancie et les soins énergétiques Lahochi.</p>
-                <a href="#services" className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105">Découvrir mes accompagnements</a>
+                <a href="#services" className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 animate-pulse inline-block">Découvrir mes accompagnements</a>
             </div>
         </section>
     );
@@ -116,29 +193,31 @@ const Hero = () => {
 const Welcome = () => {
     return (
         <section id="bienvenue" className="py-20 bg-white">
-            <div className="container mx-auto text-center px-6">
-                <h2 className="text-4xl font-display text-brand-dark mb-4">Bonjour et bienvenue, je suis Tourma-Line.</h2>
-                <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
-                   Je suis numérologue, cartomancienne et praticienne en soins énergétiques Lahochi. Mon objectif est de vous accompagner sur votre chemin de vie en vous offrant des outils puissants et des soins adaptés à vos besoins spécifiques.
-                </p>
-                <div className="grid md:grid-cols-3 gap-10">
-                    <div className="bg-brand-lilas p-8 rounded-2xl shadow-lg">
-                        <HeartHandIcon className="w-12 h-12 mx-auto mb-4 text-brand-purple"/>
-                        <h3 className="text-2xl font-display text-brand-dark mb-2">Approche humaine et bienveillante</h3>
-                        <p className="text-gray-700">Chaque consultation est un moment d'écoute et de partage. Mon objectif est de vous accompagner dans le respect de vos besoins et de vos attentes.</p>
-                    </div>
-                    <div className="bg-brand-lilas p-8 rounded-2xl shadow-lg">
-                        <KeyIcon className="w-12 h-12 mx-auto mb-4 text-brand-purple"/>
-                        <h3 className="text-2xl font-display text-brand-dark mb-2">Un chemin vers l'auto-connaissance</h3>
-                        <p className="text-gray-700">Grâce à la numérologie et à la cartomancie, vous obtiendrez des réponses qui vous permettront d'avancer plus sereinement, tout en découvrant des clés pour mieux comprendre votre vie.</p>
-                    </div>
-                    <div className="bg-brand-lilas p-8 rounded-2xl shadow-lg">
-                        <SparklesIcon className="w-12 h-12 mx-auto mb-4 text-brand-purple"/>
-                        <h3 className="text-2xl font-display text-brand-dark mb-2">Guérison énergétique</h3>
-                        <p className="text-gray-700">Les soins LAHOCHI sont une véritable source de revitalisation et de guérison, tant sur le plan physique qu'émotionnel, vous permettant de vous reconnecter à votre énergie vitale.</p>
+            <AnimateOnScroll>
+                <div className="container mx-auto text-center px-6">
+                    <h2 className="text-4xl font-display text-brand-dark mb-4">Bonjour et bienvenue, je suis Tourma-Line.</h2>
+                    <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
+                       Je suis numérologue, cartomancienne et praticienne en soins énergétiques Lahochi. Mon objectif est de vous accompagner sur votre chemin de vie en vous offrant des outils puissants et des soins adaptés à vos besoins spécifiques.
+                    </p>
+                    <div className="grid md:grid-cols-3 gap-10">
+                        <div className="bg-brand-lilas p-8 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                            <HeartHandIcon className="w-12 h-12 mx-auto mb-4 text-brand-purple"/>
+                            <h3 className="text-2xl font-display text-brand-dark mb-2">Approche humaine et bienveillante</h3>
+                            <p className="text-gray-700">Chaque consultation est un moment d'écoute et de partage. Mon objectif est de vous accompagner dans le respect de vos besoins et de vos attentes.</p>
+                        </div>
+                        <div className="bg-brand-lilas p-8 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                            <KeyIcon className="w-12 h-12 mx-auto mb-4 text-brand-purple"/>
+                            <h3 className="text-2xl font-display text-brand-dark mb-2">Un chemin vers l'auto-connaissance</h3>
+                            <p className="text-gray-700">Grâce à la numérologie et à la cartomancie, vous obtiendrez des réponses qui vous permettront d'avancer plus sereinement, tout en découvrant des clés pour mieux comprendre votre vie.</p>
+                        </div>
+                        <div className="bg-brand-lilas p-8 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                            <SparklesIcon className="w-12 h-12 mx-auto mb-4 text-brand-purple"/>
+                            <h3 className="text-2xl font-display text-brand-dark mb-2">Guérison énergétique</h3>
+                            <p className="text-gray-700">Les soins LAHOCHI sont une véritable source de revitalisation et de guérison, tant sur le plan physique qu'émotionnel, vous permettant de vous reconnecter à votre énergie vitale.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </AnimateOnScroll>
         </section>
     );
 };
@@ -154,18 +233,20 @@ const Benefits = () => {
     ];
     return (
         <section id="bienfaits" className="py-20 bg-brand-green">
-            <div className="container mx-auto text-center px-6">
-                <h2 className="text-4xl font-display text-brand-dark mb-4">Ce que mes pratiques peuvent vous apporter</h2>
-                 <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">Chaque séance est une étape vers plus de clarté, d'harmonie et de confiance en vous.</p>
-                <div className="grid md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto">
-                    {benefitsList.map((benefit, index) => (
-                        <div key={index} className="flex items-start space-x-4">
-                            <SparklesIcon className="w-6 h-6 text-brand-purple flex-shrink-0 mt-1"/>
-                            <p className="text-gray-700">{benefit}</p>
-                        </div>
-                    ))}
+            <AnimateOnScroll>
+                <div className="container mx-auto text-center px-6">
+                    <h2 className="text-4xl font-display text-brand-dark mb-4">Ce que mes pratiques peuvent vous apporter</h2>
+                     <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">Chaque séance est une étape vers plus de clarté, d'harmonie et de confiance en vous.</p>
+                    <div className="grid md:grid-cols-2 gap-8 text-left max-w-4xl mx-auto">
+                        {benefitsList.map((benefit, index) => (
+                            <div key={index} className="flex items-start space-x-4">
+                                <SparklesIcon className="w-6 h-6 text-brand-purple flex-shrink-0 mt-1"/>
+                                <p className="text-gray-700">{benefit}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            </AnimateOnScroll>
         </section>
     );
 };
@@ -201,88 +282,184 @@ const Services = ({ activeTab, setActiveTab }: { activeTab: string; setActiveTab
 
     return (
         <section id="services" className="py-20 bg-white">
-            <div className="container mx-auto text-center px-6">
-                <h2 className="text-4xl font-display text-brand-dark mb-12">Mes outils pour vous guider.</h2>
-                <div className="flex justify-center mb-8 border-b-2 border-brand-lilas">
-                    {Object.keys(tabs).map(tabKey => (
-                        <button key={tabKey} onClick={() => setActiveTab(tabKey)} className={`flex items-center space-x-2 px-6 py-3 font-display text-xl transition-colors duration-300 ${activeTab === tabKey ? 'border-b-4 border-brand-purple text-brand-purple' : 'text-gray-500 hover:text-brand-dark'}`}>
-                           {React.createElement(tabs[tabKey].icon, { className: "w-6 h-6" })}
-                           <span>{tabs[tabKey].title}</span>
-                        </button>
-                    ))}
+            <AnimateOnScroll>
+                <div className="container mx-auto text-center px-6">
+                    <h2 className="text-4xl font-display text-brand-dark mb-12">Mes outils pour vous guider.</h2>
+                    <div className="flex justify-center mb-8 border-b-2 border-brand-lilas">
+                        {Object.keys(tabs).map(tabKey => (
+                            <button key={tabKey} onClick={() => setActiveTab(tabKey)} className={`flex items-center space-x-2 px-6 py-3 font-display text-xl transition-colors duration-300 ${activeTab === tabKey ? 'border-b-4 border-brand-purple text-brand-purple' : 'text-gray-500 hover:text-brand-dark'}`}>
+                               {React.createElement(tabs[tabKey].icon, { className: "w-6 h-6" })}
+                               <span>{tabs[tabKey].title}</span>
+                            </button>
+                        ))}
+                    </div>
+                    <div className="max-w-4xl mx-auto text-left p-8 bg-brand-lilas rounded-2xl shadow-inner transition-all duration-500">
+                        <AnimateOnScroll key={activeTab}>
+                            <h3 className="text-3xl font-display text-brand-dark mb-4">{tabs[activeTab].contentTitle}</h3>
+                            <p className="text-gray-700 leading-relaxed">{tabs[activeTab].content}</p>
+                             {tabs[activeTab].features && (
+                                <ul className="mt-6 space-y-4">
+                                    {tabs[activeTab].features.map((feature, index) => (
+                                        <li key={index} className="flex items-start space-x-3">
+                                            <SparklesIcon className="w-5 h-5 text-brand-purple flex-shrink-0 mt-1" />
+                                            <p className="text-gray-700"><span className="font-semibold">{feature.split(':')[0]}:</span>{feature.split(':')[1]}</p>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </AnimateOnScroll>
+                    </div>
                 </div>
-                <div className="max-w-4xl mx-auto text-left p-8 bg-brand-lilas rounded-2xl shadow-inner">
-                    <h3 className="text-3xl font-display text-brand-dark mb-4">{tabs[activeTab].contentTitle}</h3>
-                    <p className="text-gray-700 leading-relaxed">{tabs[activeTab].content}</p>
-                     {tabs[activeTab].features && (
-                        <ul className="mt-6 space-y-4">
-                            {tabs[activeTab].features.map((feature, index) => (
-                                <li key={index} className="flex items-start space-x-3">
-                                    <SparklesIcon className="w-5 h-5 text-brand-purple flex-shrink-0 mt-1" />
-                                    <p className="text-gray-700"><span className="font-semibold">{feature.split(':')[0]}:</span>{feature.split(':')[1]}</p>
-                                </li>
-                            ))}
-                        </ul>
-                    )}
+            </AnimateOnScroll>
+        </section>
+    );
+};
+
+const Formules = () => {
+    const formulesList = [
+        {
+            icon: FeatherIcon,
+            title: "Séance de Confort",
+            subtitle: "Libération & Bien-être immédiat",
+            idealFor: "Les besoins ponctuels : stress, manque d’énergie, doute, surcharge émotionnelle ou besoin de retrouver confiance.",
+            details: [
+                "Lecture énergétique et guidance par numérologie et cartomancie.",
+                "Soin Lahochi ciblé pour réharmoniser les chakras et libérer les tensions.",
+                "Conseils d’ancrage ou message intuitif de fin de séance."
+            ],
+            duration: "1h à 1h15",
+            price: "50€",
+            priceNote: "Une bulle de réconfort"
+        },
+        {
+            icon: BalanceIcon,
+            title: "Formule “Harmonie Intérieure”",
+            subtitle: "3 Séances sur 1 mois",
+            objective: "Apaiser les émotions, comprendre les schémas répétitifs et rééquilibrer les énergies pour restaurer l’harmonie globale.",
+            details: [
+                "1 séance combinée de numérologie et de cartomancie.",
+                "1 soin Lahochi (à une autre date).",
+                "Mini suivi par message entre les séances."
+            ],
+            duration: "environ 1 mois",
+            price: "135€",
+            priceNote: "(au lieu de 150€)"
+        },
+        {
+            icon: ButterflyIcon,
+            title: "Formule “Renaissance”",
+            subtitle: "Accompagnement sur 3 mois",
+            objective: "Guérir en profondeur, libérer les mémoires émotionnelles et retrouver une stabilité intérieure durable (traumatismes, deuils, ruptures).",
+            details: [
+                "1 séance de cartomancie + numérologie (démarrage).",
+                "3 soins Lahochi (1 par mois).",
+                "Suivi énergétique et guidance entre les séances.",
+                "1 séance de cartomancie de clôture."
+            ],
+            duration: "3 mois",
+            price: "300€",
+            priceNote: "Un chemin de transformation"
+        }
+    ];
+
+    return (
+        <section id="formules" className="py-20 bg-brand-green">
+            <AnimateOnScroll>
+                <div className="container mx-auto text-center px-6">
+                    <h2 className="text-4xl font-display text-brand-dark mb-4">Les Formules d’Accompagnement</h2>
+                    <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
+                        Chaque personne est unique. C'est pourquoi chaque séance commence par une lecture énergétique pour un accompagnement juste, ciblé et adapté à votre histoire.
+                    </p>
+                    <div className="grid md:grid-cols-3 gap-8 items-start">
+                        {formulesList.map((formule, index) => (
+                            <div key={index} className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-brand-purple transition-all duration-300 hover:scale-105 hover:shadow-2xl h-full flex flex-col text-left">
+                                {React.createElement(formule.icon, { className: "w-12 h-12 mb-4 text-brand-purple self-center" })}
+                                <h3 className="text-2xl font-display text-brand-dark text-center mb-1">{formule.title}</h3>
+                                <p className="text-brand-purple font-semibold mb-6 text-center">{formule.subtitle}</p>
+                                
+                                <p className="text-gray-700 mb-4"><strong className="font-semibold">{formule.idealFor ? "Idéale pour :" : "Objectif :"}</strong> {formule.idealFor || formule.objective}</p>
+
+                                <p className="font-semibold text-gray-800 mb-2">{formule.details.length > 0 ? (formule.title === "Séance de Confort" ? "Déroulé :" : "Contenu :") : ""}</p>
+                                <ul className="space-y-2 text-gray-700 mb-6 flex-grow">
+                                    {formule.details.map((item, i) => (
+                                        <li key={i} className="flex items-start">
+                                            <SparklesIcon className="w-5 h-5 text-brand-purple flex-shrink-0 mr-2 mt-1" />
+                                            <span>{item}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                                
+                                <div className="text-center border-t border-brand-lilas pt-4 mt-auto">
+                                    <p className="text-gray-600 text-sm">{formule.duration}</p>
+                                    <p className="text-4xl font-bold text-brand-dark my-1">{formule.price}</p>
+                                    <p className="text-gray-600 text-sm">{formule.priceNote}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
+            </AnimateOnScroll>
         </section>
     );
 };
 
 const SessionFlow = () => {
     return (
-        <section id="deroulement" className="py-20 bg-brand-green">
-            <div className="container mx-auto text-center px-6">
-                <h2 className="text-4xl font-display text-brand-dark mb-12">Un accompagnement adapté à vous</h2>
-                <div className="grid md:grid-cols-3 gap-10">
-                    <div className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-brand-purple">
-                        <h3 className="text-2xl font-display text-brand-dark mb-3">À distance</h3>
-                        <p className="text-gray-600">Par téléphone, visio ou Messenger, pour une flexibilité totale où que vous soyez.</p>
-                    </div>
-                     <div className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-brand-purple">
-                        <h3 className="text-2xl font-display text-brand-dark mb-3">À domicile</h3>
-                        <p className="text-gray-600 mb-4">Je peux me déplacer à votre domicile dans les environs de Gerponville (Valmont, Fécamp, etc.). Les séances peuvent également avoir lieu à mon domicile à Gerponville, sur rendez-vous.</p>
-                    </div>
-                    <div className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-brand-purple">
-                        <h3 className="text-2xl font-display text-brand-dark mb-3">Au cabinet</h3>
-                        <p className="text-gray-600 mb-4">Je vous accueille dans un espace serein au 161 rue Souveraine, 76450 Saint-Riquier-ès-Plains (sur RDV).</p>
-                        <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2581.307994998918!2d0.6401878157038165!3d49.8052989793914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e069c9b19e2c6f%3A0x7d6f5f6b2a3a5f7!2s161%20Rue%20Souveraine%2C%2076450%20Saint-Riquier-%C3%A8s-Plains%2C%20France!5e0!3m2!1sen!2sus!4v1701186638458!5m2!1sen!2sus"
-                                width="100%"
-                                height="200"
-                                style={{ border: 0 }}
-                                allowFullScreen=""
-                                loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade">
-                            </iframe>
+        <section id="deroulement" className="py-20 bg-white">
+            <AnimateOnScroll>
+                <div className="container mx-auto text-center px-6">
+                    <h2 className="text-4xl font-display text-brand-dark mb-12">Un accompagnement adapté à vous</h2>
+                    <div className="grid md:grid-cols-3 gap-10">
+                        <div className="bg-brand-lilas p-8 rounded-2xl shadow-lg border-t-4 border-brand-purple transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                            <h3 className="text-2xl font-display text-brand-dark mb-3">À distance</h3>
+                            <p className="text-gray-600">Par téléphone, visio ou Messenger, pour une flexibilité totale où que vous soyez.</p>
+                        </div>
+                         <div className="bg-brand-lilas p-8 rounded-2xl shadow-lg border-t-4 border-brand-purple transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                            <h3 className="text-2xl font-display text-brand-dark mb-3">À domicile</h3>
+                            <p className="text-gray-600 mb-4">Je peux me déplacer à votre domicile dans les environs de Gerponville (Valmont, Fécamp, etc.). Les séances peuvent également avoir lieu à mon domicile à Gerponville, sur rendez-vous.</p>
+                        </div>
+                        <div className="bg-brand-lilas p-8 rounded-2xl shadow-lg border-t-4 border-brand-purple transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                            <h3 className="text-2xl font-display text-brand-dark mb-3">Au cabinet</h3>
+                            <p className="text-gray-600 mb-4">Je vous accueille dans un espace serein au 161 rue Souveraine, 76450 Saint-Riquier-ès-Plains (sur RDV).</p>
+                            <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2581.307994998918!2d0.6401878157038165!3d49.8052989793914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e069c9b19e2c6f%3A0x7d6f5f6b2a3a5f7!2s161%20Rue%20Souveraine%2C%2076450%20Saint-Riquier-%C3%A8s-Plains%2C%20France!5e0!3m2!1sen!2sus!4v1701186638458!5m2!1sen!2sus"
+                                    width="100%"
+                                    height="200"
+                                    style={{ border: 0 }}
+                                    allowFullScreen=""
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade">
+                                </iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </AnimateOnScroll>
         </section>
     );
 };
 
 const Pricing = () => {
     return (
-        <section id="tarifs" className="py-20 bg-white">
-            <div className="container mx-auto text-center px-6">
-                <h2 className="text-4xl font-display text-brand-dark mb-12">Mes tarifs</h2>
-                <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
-                    <div className="bg-brand-lilas p-8 rounded-2xl shadow-lg text-brand-dark">
-                        <h3 className="text-2xl font-display mb-4">Consultation Numérologie & Cartomancie</h3>
-                        <p className="text-5xl font-bold mb-4">50€</p>
-                        <p className="text-gray-700">À distance, à domicile ou au cabinet</p>
-                    </div>
-                    <div className="bg-brand-lilas p-8 rounded-2xl shadow-lg text-brand-dark">
-                        <h3 className="text-2xl font-display mb-4">Soin énergétique LAHOCHI</h3>
-                        <p className="text-5xl font-bold mb-4">50€</p>
-                        <p className="text-gray-700">À distance ou à domicile</p>
+        <section id="tarifs" className="py-20 bg-brand-green">
+            <AnimateOnScroll>
+                <div className="container mx-auto text-center px-6">
+                    <h2 className="text-4xl font-display text-brand-dark mb-12">Tarifs des Séances Uniques</h2>
+                    <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+                        <div className="bg-white p-8 rounded-2xl shadow-lg text-brand-dark transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                            <h3 className="text-2xl font-display mb-4">Consultation Numérologie & Cartomancie</h3>
+                            <p className="text-5xl font-bold mb-4">50€</p>
+                            <p className="text-gray-700">À distance, à domicile ou au cabinet</p>
+                        </div>
+                        <div className="bg-white p-8 rounded-2xl shadow-lg text-brand-dark transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                            <h3 className="text-2xl font-display mb-4">Soin énergétique LAHOCHI</h3>
+                            <p className="text-5xl font-bold mb-4">50€</p>
+                            <p className="text-gray-700">À distance ou à domicile</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </AnimateOnScroll>
         </section>
     );
 };
@@ -304,51 +481,55 @@ const Testimonials = () => {
     ];
 
     return (
-        <section id="temoignages" className="py-20 bg-brand-green">
-            <div className="container mx-auto text-center px-6">
-                <h2 className="text-4xl font-display text-brand-dark mb-12">Ce que mes clients disent</h2>
-                <div className="grid md:grid-cols-3 gap-8">
-                    {testimonialsList.map((testimonial, index) => (
-                        <div key={index} className="bg-white p-6 rounded-2xl shadow-lg">
-                            <p className="text-gray-600 italic mb-4">"{testimonial.quote}"</p>
-                            <p className="font-bold text-brand-purple">- {testimonial.name}</p>
-                        </div>
-                    ))}
+        <section id="temoignages" className="py-20 bg-white">
+            <AnimateOnScroll>
+                <div className="container mx-auto text-center px-6">
+                    <h2 className="text-4xl font-display text-brand-dark mb-12">Ce que mes clients disent</h2>
+                    <div className="grid md:grid-cols-3 gap-8">
+                        {testimonialsList.map((testimonial, index) => (
+                            <div key={index} className="bg-brand-lilas p-6 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl">
+                                <p className="text-gray-600 italic mb-4">"{testimonial.quote}"</p>
+                                <p className="font-bold text-brand-purple">- {testimonial.name}</p>
+                            </div>
+                        ))}
+                    </div>
+                     <a href="https://www.google.com/search?q=Tourma-Line%20Line%20Simon%20Num%C3%A9rologie%20Cartomancie%20et%20Soins%20%C3%A9nerg%C3%A9tiques%20LAHOCHI%20Avis&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDU2NTcyNTCyNDQwsbAwNzKzsNzAyPiKMSQkv7QoN1HXJzMvVQFMBGfm5ucp-JXmHl5ZlJ-Tn56ZquCcWFSSn5uYlwxkp5YoBOdn5hUrHF6Zl1qUfnhlSWZhaWqxgo-jh7-zh6eCY1lm8SJWmhgLAITx8bLJAAAA&rldimm=15357250291048872689&tbm=lcl&cs=1&hl=fr&sa=X&ved=0CAYQ5foLahcKEwiwsdzjoO2QAxUAAAAAHQAAAAAQCQ&biw=1014&bih=656&dpr=1#lkt=LocalPoiReviews&arid=ChdDSUhNMG9nS0VNTEV0NktUM19fQ2hnRRAB" target="_blank" rel="noopener noreferrer" className="mt-8 inline-block bg-brand-purple hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105">
+                        Lire plus d'avis sur Google
+                    </a>
                 </div>
-                 <a href="https://www.google.com/search?q=Tourma-Line%20Line%20Simon%20Num%C3%A9rologie%20Cartomancie%20et%20Soins%20%C3%A9nerg%C3%A9tiques%20LAHOCHI%20Avis&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDU2NTcyNTCyNDQwsbAwNzKzsNzAyPiKMSQkv7QoN1HXJzMvVQFMBGfm5ucp-JXmHl5ZlJ-Tn56ZquCcWFSSn5uYlwxkp5YoBOdn5hUrHF6Zl1qUfnhlSWZhaWqxgo-jh7-zh6eCY1lm8SJWmhgLAITx8bLJAAAA&rldimm=15357250291048872689&tbm=lcl&cs=1&hl=fr&sa=X&ved=0CAYQ5foLahcKEwiwsdzjoO2QAxUAAAAAHQAAAAAQCQ&biw=1014&bih=656&dpr=1#lkt=LocalPoiReviews&arid=ChdDSUhNMG9nS0VNTEV0NktUM19fQ2hnRRAB" target="_blank" rel="noopener noreferrer" className="mt-8 inline-block bg-brand-purple hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105">
-                    Lire plus d'avis sur Google
-                </a>
-            </div>
+            </AnimateOnScroll>
         </section>
     );
 };
 
 const Booking = () => {
     return (
-        <section id="rendezvous" className="py-20 bg-white">
-            <div className="container mx-auto text-center px-6">
-                <h2 className="text-4xl font-display text-brand-dark mb-4">Prêt(e) à commencer votre voyage intérieur ?</h2>
-                <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
-                    Je suis là pour vous offrir des réponses et un accompagnement personnalisé. Contactez-moi dès maintenant pour réserver votre séance ! Je serai ravie de vous accompagner sur votre chemin de vie avec professionnalisme et bienveillance.
-                </p>
-                <a href="https://www.facebook.com/tourma.line.534540" target="_blank" rel="noopener noreferrer" className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-4 px-10 rounded-full text-xl transition-transform transform hover:scale-105 inline-block">
-                    Réserver ma séance
-                </a>
-                <div className="mt-10">
-                     <p className="text-gray-700 font-semibold">Pour me joindre :</p>
-                    <p className="text-lg text-brand-dark mt-2">
-                        <a href="tel:0649653186" className="hover:underline">06 49 65 31 86</a> | <a href="mailto:line.simon.ls@gmail.com" className="hover:underline">line.simon.ls@gmail.com</a>
+        <section id="rendezvous" className="py-20 bg-brand-green">
+            <AnimateOnScroll>
+                <div className="container mx-auto text-center px-6">
+                    <h2 className="text-4xl font-display text-brand-dark mb-4">Prêt(e) à commencer votre voyage intérieur ?</h2>
+                    <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
+                        Je suis là pour vous offrir des réponses et un accompagnement personnalisé. Contactez-moi dès maintenant pour réserver votre séance ! Je serai ravie de vous accompagner sur votre chemin de vie avec professionnalisme et bienveillance.
                     </p>
-                    <div className="flex justify-center space-x-6 mt-4">
-                        <a href="https://www.facebook.com/tourma.line.534540" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-brand-purple transition-colors">
-                            <FacebookIcon className="w-8 h-8"/>
-                        </a>
-                        <a href="https://wa.me/qr/NZDHZRB3ZW52B1" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-brand-purple transition-colors">
-                            <WhatsAppIcon className="w-8 h-8" />
-                        </a>
+                    <a href="https://www.facebook.com/tourma.line.534540" target="_blank" rel="noopener noreferrer" className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-4 px-10 rounded-full text-xl transition-transform transform hover:scale-105 inline-block animate-pulse">
+                        Réserver ma séance
+                    </a>
+                    <div className="mt-10">
+                         <p className="text-gray-700 font-semibold">Pour me joindre :</p>
+                        <p className="text-lg text-brand-dark mt-2">
+                            <a href="tel:0649653186" className="hover:underline">06 49 65 31 86</a> | <a href="mailto:line.simon.ls@gmail.com" className="hover:underline">line.simon.ls@gmail.com</a>
+                        </p>
+                        <div className="flex justify-center space-x-6 mt-4">
+                            <a href="https://www.facebook.com/tourma.line.534540" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-brand-purple transition-colors">
+                                <FacebookIcon className="w-8 h-8"/>
+                            </a>
+                            <a href="https://wa.me/qr/NZDHZRB3ZW52B1" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-brand-purple transition-colors">
+                                <WhatsAppIcon className="w-8 h-8" />
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </AnimateOnScroll>
         </section>
     );
 };
@@ -365,7 +546,7 @@ const Footer = () => {
                 <p className="text-sm text-gray-400">Tourmaline, 76540 Gerponville | Siret : 93116533600013</p>
                 <p className="text-sm text-gray-400 mt-1">Intervention à domicile sur le secteur Gerponville, Valmont, Fécamp, Cany-Barville, Ourville-en-Caux.</p>
                 <p className="text-sm text-gray-400 mt-1">Merci de votre visite.</p>
-                 <a href="https://www.google.com/search?sca_esv=b1b93c191aaa47d3&sxsrf=AE3TifPYZY4KkqMWnY5gZGk3n-vOMMPhAg:1762975647931&q=Tourma-Line+Line+Simon+Num%C3%A9rologie+Cartomancie+et+Soins+%C3%A9nerg%C3%A9tiques+LAHOCHI&si=AMgyJEs9DArPE9xmb5yVYVjpG4jqWDEKSIpCRSjmm88XZWnGNboYSYaVnHI8Cn4IKluKbWRXYq-r0WYB-1748A7mqdXrZUulOMOySxFRN-q-rlVeZj6ypC5qIaStj2zXV6nogPxZwVFtXxigmA-dqJHtBVRMAectv_K5Xo0VYmewelH3do5M-dAjT6PwxvoziBwKDnAPsX9naiebeBv7x2A75ft3kXZHUg%3D%D&sa=X&ved=2ahUKExiFifiJrO2QAxW0NvsDHRiNLegQ_coHegQIKRAB" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-brand-purple transition-colors mt-2 inline-block">
+                 <a href="https://www.google.com/search?sca_esv=b1b93c191aaa47d3&sxsrf=AE3TifPYZY4KkqMWnY5gZGk3n-vOMMPhAg:1762975647931&q=Tourma-Line+Line+Simon+Num%C3%A9rologie+Cartomancie+et+Soins+%C3%A9nerg%C3%A9tiques+LAHOCHI&si=AMgyJEs9DArPE9xmb5yVYVjpG4jqWDEKSIpCRSjmm88XZWnGNboYSYaVnHI8Cn4IKluKbWRXYq-r0WYB-1748A7mqdXrZUulOMOySxFRN-q-rlVeZj6ypC5qIaStj2zXV6nogPxZwVFtXxigmA-dqJHtBVRMAectv_K5Xo0VYmewelH3do5M-dAjT6PwxvoziBwKDnAPsX9naiebeBv7x2A75ft3kXZHUg%3D%3D&sa=X&ved=2ahUKExiFifiJrO2QAxW0NvsDHRiNLegQ_coHegQIKRAB" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-brand-purple transition-colors mt-2 inline-block">
                     Voir sur Google Business
                 </a>
             </div>
@@ -387,12 +568,16 @@ const Chatbot = () => {
 
 **Business Information:**
 - **Practitioner:** Tourma-Line (Line Simon)
-- **Services:**
-  1.  **Consultation Numérologie & Cartomancie (50€):** An exploration of one's life path using numerology (from birth date) and cartomancy (card reading). It provides clarity on talents, challenges, and personal, professional, or romantic questions. (Available: at the cabinet, at home, remotely).
-  2.  **Soin énergétique LAHOCHI (50€):** A high-frequency energy healing method, stronger than Reiki. It rebalances chakras, releases blockages, reduces stress, and promotes deep physical and emotional well-being. (Available: at home, remotely).
+- **Services (Single Sessions):**
+  1.  **Consultation Numérologie & Cartomancie (50€):** An exploration of one's life path.
+  2.  **Soin énergétique LAHOCHI (50€):** A high-frequency energy healing method.
+- **Formules (Packages):**
+  1.  **Séance de Confort (50€):** A 1-1.25h single session for immediate needs (stress, fatigue). Includes energy reading, Lahochi, and guidance. It's a great starting point.
+  2.  **Formule "Harmonie Intérieure" (135€):** 3 sessions over 1 month for recurring blockages. Includes 1 numerology/cartomancy session, 1 Lahochi session, and message support between sessions.
+  3.  **Formule "Renaissance" (300€):** A 3-month deep transformation for older trauma (grief, difficult breakups). Includes 1 initial full reading, 3 monthly Lahochi sessions, continuous guidance, and 1 closing reading session.
 - **Locations & How Sessions Work:**
   - **À distance (Remote):** Flexible sessions via Phone, Video call, or Messenger.
-  - **À domicile (At home):** Serving the area around Gerponville, including towns like Valmont, Fécamp, Cany-Barville, and Ourville-en-Caux.
+  - **À domicile (At home):** Serving the area around Gerponville, including towns like Valmont, Fécamp, Cany-Barville, and Ourville-en-Caux. Sessions can also be at her home in Gerponville.
   - **Au cabinet (At the cabinet):** A serene space at "161 rue Souveraine, 76450 Saint-Riquier-ès-Plains". By appointment only.
 - **Client Testimonials (To be used naturally in conversation):**
   - **PATRICIA FATRAS:** "J’ai eu la chance de croiser Touma-Line... elle a su me décrire avec une justesse..."
@@ -428,7 +613,6 @@ const Chatbot = () => {
             const config = isThinkingMode ? { thinkingConfig: { thinkingBudget: 32768 } } : {};
             
             const history = messages.map(m => ({ role: m.role, parts: [{ text: m.text }] }));
-            // Remove the initial detailed message from history sent to API to keep it concise
             if (history.length > 0 && history[0].role === 'model') {
                 history.shift();
             }
@@ -436,12 +620,13 @@ const Chatbot = () => {
             const response = await ai.models.generateContent({
                 model,
                 contents: [
-                    { role: 'user', parts: [{ text: `System instruction: ${systemInstruction}` }] },
-                    { role: 'model', parts: [{ text: "Oui, je suis prêt à aider en tant qu'Assistant Tourma-Line avec une approche authentique et bienveillante." }] },
                     ...history,
                     { role: 'user', parts: [{ text: input }] }
                 ],
-                config
+                config: {
+                    ...config,
+                    systemInstruction: systemInstruction,
+                },
             });
 
             const modelMessage = { role: 'model', text: response.text };
@@ -466,56 +651,54 @@ const Chatbot = () => {
                 {isOpen ? <CloseIcon className="w-8 h-8" /> : <ChatBubbleIcon className="w-8 h-8" />}
             </button>
 
-            {isOpen && (
-                <div className="fixed bottom-24 right-6 w-full max-w-md bg-white rounded-2xl shadow-2xl flex flex-col z-50 h-[70vh]">
-                    <header className="bg-brand-purple text-white p-4 rounded-t-2xl flex justify-between items-center">
-                        <h3 className="font-display text-xl">Assistant Tourma-Line</h3>
-                    </header>
-                    <div className="flex-1 p-4 overflow-y-auto bg-brand-lilas">
-                        {messages.map((msg, index) => (
-                            <div key={index} className={`flex my-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                                <div className={`p-3 rounded-2xl max-w-xs whitespace-pre-wrap ${msg.role === 'user' ? 'bg-brand-purple text-white' : 'bg-white text-brand-dark'}`}>
-                                    {msg.text}
-                                </div>
+            <div className={`fixed bottom-24 right-6 w-full max-w-md bg-white rounded-2xl shadow-2xl flex flex-col z-50 h-[70vh] transition-all duration-500 ease-in-out ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
+                <header className="bg-brand-purple text-white p-4 rounded-t-2xl flex justify-between items-center">
+                    <h3 className="font-display text-xl">Assistant Tourma-Line</h3>
+                </header>
+                <div className="flex-1 p-4 overflow-y-auto bg-brand-lilas">
+                    {messages.map((msg, index) => (
+                        <div key={index} className={`flex my-2 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+                            <div className={`p-3 rounded-2xl max-w-xs whitespace-pre-wrap ${msg.role === 'user' ? 'bg-brand-purple text-white' : 'bg-white text-brand-dark'}`}>
+                                {msg.text}
                             </div>
-                        ))}
-                         {isLoading && (
-                            <div className="flex justify-start my-2">
-                                <div className="p-3 rounded-2xl bg-white text-brand-dark">
-                                    <span className="animate-pulse">...</span>
-                                </div>
-                            </div>
-                        )}
-                        <div ref={chatEndRef} />
-                    </div>
-                     <div className="p-4 border-t border-gray-200">
-                         <div className="flex items-center justify-center mb-2">
-                            <label htmlFor="thinking-mode" className="flex items-center cursor-pointer">
-                                <span className="mr-2 text-sm text-gray-600">Mode Réflexion</span>
-                                <div className="relative">
-                                    <input id="thinking-mode" type="checkbox" className="sr-only" checked={isThinkingMode} onChange={() => setIsThinkingMode(!isThinkingMode)} />
-                                    <div className="block bg-gray-300 w-10 h-6 rounded-full"></div>
-                                    <div className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform ${isThinkingMode ? 'transform translate-x-full bg-brand-purple' : ''}`}></div>
-                                </div>
-                                <SparklesIcon className={`w-5 h-5 ml-2 ${isThinkingMode ? 'text-brand-purple' : 'text-gray-400'}`} />
-                            </label>
                         </div>
-                        <form onSubmit={handleSendMessage} className="flex items-center space-x-2">
-                            <input
-                                type="text"
-                                value={input}
-                                onChange={(e) => setInput(e.target.value)}
-                                placeholder="Posez votre question..."
-                                className="flex-1 p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-brand-purple bg-white text-brand-dark placeholder-gray-500"
-                                disabled={isLoading}
-                            />
-                            <button type="submit" className="bg-brand-purple text-white p-3 rounded-full hover:bg-opacity-80 disabled:bg-gray-400" disabled={isLoading}>
-                                <SendIcon className="w-6 h-6" />
-                            </button>
-                        </form>
-                    </div>
+                    ))}
+                     {isLoading && (
+                        <div className="flex justify-start my-2">
+                            <div className="p-3 rounded-2xl bg-white text-brand-dark">
+                                <span className="animate-pulse">...</span>
+                            </div>
+                        </div>
+                    )}
+                    <div ref={chatEndRef} />
                 </div>
-            )}
+                 <div className="p-4 border-t border-gray-200">
+                     <div className="flex items-center justify-center mb-2">
+                        <label htmlFor="thinking-mode" className="flex items-center cursor-pointer">
+                            <span className="mr-2 text-sm text-gray-600">Mode Réflexion</span>
+                            <div className="relative">
+                                <input id="thinking-mode" type="checkbox" className="sr-only" checked={isThinkingMode} onChange={() => setIsThinkingMode(!isThinkingMode)} />
+                                <div className="block bg-gray-300 w-10 h-6 rounded-full"></div>
+                                <div className={`dot absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-transform ${isThinkingMode ? 'transform translate-x-full bg-brand-purple' : ''}`}></div>
+                            </div>
+                            <SparklesIcon className={`w-5 h-5 ml-2 ${isThinkingMode ? 'text-brand-purple' : 'text-gray-400'}`} />
+                        </label>
+                    </div>
+                    <form onSubmit={handleSendMessage} className="flex items-center space-x-2">
+                        <input
+                            type="text"
+                            value={input}
+                            onChange={(e) => setInput(e.target.value)}
+                            placeholder="Posez votre question..."
+                            className="flex-1 p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-brand-purple bg-white text-brand-dark placeholder-gray-500"
+                            disabled={isLoading}
+                        />
+                        <button type="submit" className="bg-brand-purple text-white p-3 rounded-full hover:bg-opacity-80 disabled:bg-gray-400" disabled={isLoading}>
+                            <SendIcon className="w-6 h-6" />
+                        </button>
+                    </form>
+                </div>
+            </div>
         </>
     );
 };
@@ -533,6 +716,7 @@ const App = () => {
         <Welcome />
         <Benefits />
         <Services activeTab={activeTab} setActiveTab={setActiveTab} />
+        <Formules />
         <SessionFlow />
         <Pricing />
         <Testimonials />

@@ -18,14 +18,14 @@
     <meta property="og:url" content="https://www.tourma-line.fr/" />
     <meta property="og:title" content="TOURMA-LINE | Numérologue & Soin Lahochi en Normandie" />
     <meta property="og:description" content="Découvrez votre chemin de vie avec Tourma-Line. Guidance personnalisée via la numérologie, la cartomancie et les soins énergétiques Lahochi en Normandie." />
-    <meta property="og:image" content="https://storage.googleapis.com/aai-web-samples/mediapipe/tourmaline_hero_4.jpeg" />
+    <meta property="og:image" content="https://storage.googleapis.com/aai-web-samples/mediapipe/cosmic_galaxy.jpeg" />
 
     <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://www.tourma-line.fr/" />
     <meta name="twitter:title" content="TOURMA-LINE | Numérologue & Soin Lahochi en Normandie" />
     <meta name="twitter:description" content="Découvrez votre chemin de vie avec Tourma-Line. Guidance personnalisée via la numérologie, la cartomancie et les soins énergétiques Lahochi en Normandie." />
-    <meta name="twitter:image" content="https://storage.googleapis.com/aai-web-samples/mediapipe/tourmaline_hero_4.jpeg" />
+    <meta name="twitter:image" content="https://storage.googleapis.com/aai-web-samples/mediapipe/cosmic_galaxy.jpeg" />
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +42,7 @@
         theme: {
           extend: {
             backgroundImage: {
-              'hero-pattern': "url('https://storage.googleapis.com/aai-web-samples/mediapipe/tourmaline_hero_4.jpeg')",
+              'hero-pattern': "url('https://storage.googleapis.com/aai-web-samples/mediapipe/cosmic_galaxy.jpeg')",
             },
             fontFamily: {
               sans: ['Poppins', 'sans-serif'],
@@ -54,6 +54,19 @@
               'brand-dark': '#4A4063',
               'brand-green': '#D1E7DD',
               'brand-gold': '#F0E68C',
+            },
+            keyframes: {
+              fadeInUp: {
+                'from': { opacity: 0, transform: 'translateY(20px)' },
+                'to': { opacity: 1, transform: 'translateY(0)' },
+              },
+              pulse: {
+                 '50%': { opacity: .85, transform: 'scale(1.02)' },
+              }
+            },
+            animation: {
+              fadeInUp: 'fadeInUp 1s ease-out forwards',
+              pulse: 'pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
             }
           }
         }
