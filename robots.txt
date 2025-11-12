@@ -1,0 +1,8 @@
+# This file tells search engine crawlers which pages they can or cannot access on your site.
+
+# Allow all web crawlers (like Googlebot) to access all parts of the site.
+User-agent: *
+Allow: /
+
+# Provide the location of the sitemap to help crawlers understand the site structure.
+Sitemap: https://www.tourma-line.fr/sitemap.xml
