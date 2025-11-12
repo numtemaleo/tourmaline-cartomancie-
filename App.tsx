@@ -73,16 +73,27 @@ const SendIcon = ({ className }: { className?: string }) => (
 // --- COMPONENT DEFINITIONS ---
 
 const Header = () => {
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+        e.preventDefault();
+        const targetId = e.currentTarget.getAttribute('href')?.substring(1);
+        if (targetId) {
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    };
+
     return (
         <header className="bg-brand-dark bg-opacity-50 text-white p-4 fixed top-0 left-0 right-0 z-50">
             <div className="container mx-auto flex justify-between items-center">
                 <h1 className="text-2xl font-display font-bold text-brand-lilas">TOURMA-LINE</h1>
                 <nav className="hidden md:flex space-x-6">
-                    <a href="#accueil" className="hover:text-brand-purple transition-colors">Accueil</a>
-                    <a href="#services" className="hover:text-brand-purple transition-colors">Mes Services</a>
-                    <a href="#bienfaits" className="hover:text-brand-purple transition-colors">Bienfaits</a>
-                    <a href="#tarifs" className="hover:text-brand-purple transition-colors">Tarifs</a>
-                    <a href="#rendezvous" className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-2 px-4 rounded-full transition-colors">Prendre RDV</a>
+                    <a href="#accueil" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Accueil</a>
+                    <a href="#services" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Mes Services</a>
+                    <a href="#bienfaits" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Bienfaits</a>
+                    <a href="#tarifs" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Tarifs</a>
+                    <a href="#rendezvous" onClick={handleNavClick} className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-2 px-4 rounded-full transition-colors">Prendre RDV</a>
                 </nav>
             </div>
         </header>
