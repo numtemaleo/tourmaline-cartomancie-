@@ -29,7 +29,7 @@ const FacebookIcon = ({ className }: { className?: string }) => (
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 12c0 1.74.44 3.37 1.23 4.78L2 22l5.33-1.38c1.37.71 2.93 1.11 4.58 1.11h.01c5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.82-9.91-9.82zM17.2 15.25c-.21 0-.46-.07-.72-.18-.54-.22-1.04-.54-1.2-.72-.15-.17-.28-.36-.42-.53-.13-.17-.28-.34-.42-.51s-.29-.34-.44-.51c-.15-.17-.31-.34-.46-.51-.15-.17-.32-.34-.48-.51s-.32-.34-.49-.51c-.17-.17-.35-.34-.52-.51l-.14-.14s-.14-.14-.28-.28c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42l-.14-.14c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-1.12-1.12-2.24-2.24-3.36-3.36C3.06 6.37 4.1 5.25 4.1 5.25s1.12 1.12 1.12 1.12l.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42.28.28.42.42l.14.14s.14.14.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42l.14.14c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42c.15.15.29.3.44.44s.29.3.44.44l.14.14c.15.15.29.3.44.44s.29.3.44.44l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.1-4.1-3.3-3.3-1.42 1.42z" />
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 12c0 1.74.44 3.37 1.23 4.78L2 22l5.33-1.38c1.37.71 2.93 1.11 4.58 1.11h.01c5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.82-9.91-9.82zM17.2 15.25c-.21 0-.46-.07-.72-.18-.54-.22-1.04-.54-1.2-.72-.15-.17-.28-.36-.42-.53-.13-.17-.28-.34-.42-.51s-.29-.34-.44-.51c-.15-.17-.31-.34-.46-.51-.15-.17-.32-.34-.48-.51s-.32-.34-.49-.51c-.17-.17-.35-.34-.52-.51l-.14-.14s-.14-.14-.28-.28c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42l-.14-.14c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-1.12-1.12-2.24-2.24-3.36-3.36C3.06 6.37 4.1 5.25 4.1 5.25s1.12 1.12 1.12 1.12l.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42.28.28.42.42l.14.14s.14.14.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42l.14.14c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42c.15.15.29.3.44.44s.29.3.44.44l.14.14c.15.15.29.3.44.44s.29.3.44.44l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.1-4.1-3.3-3.3-1.42 1.42z" />
     </svg>
 );
 
@@ -231,18 +231,7 @@ const SessionFlow = () => {
                     </div>
                      <div className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-brand-purple">
                         <h3 className="text-2xl font-display text-brand-dark mb-3">À domicile</h3>
-                        <p className="text-gray-600 mb-4">RDV à domicile au Résidence Les Peupliers, 76540 Gerponville.</p>
-                        <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden">
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2577.679493979403!2d0.589862315706246!3d49.77123497938678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e06a3e5c3e5d7b%3A0x8e8b9d3e8e1f0e4b!2sR%C3%A9sidence%20les%20Peupliers%2C%2076540%20Gerponville%2C%20France!5e0!3m2!1sen!2sus!4v1701186729352!5m2!1sen!2sus" 
-                                width="100%" 
-                                height="200" 
-                                style={{ border: 0 }} 
-                                allowFullScreen="" 
-                                loading="lazy" 
-                                referrerPolicy="no-referrer-when-downgrade">
-                            </iframe>
-                        </div>
+                        <p className="text-gray-600 mb-4">Pour votre confort, je me déplace chez vous dans les environs de Gerponville, y compris des communes comme Valmont et Fécamp.</p>
                     </div>
                     <div className="bg-white p-8 rounded-2xl shadow-lg border-t-4 border-brand-purple">
                         <h3 className="text-2xl font-display text-brand-dark mb-3">Au cabinet</h3>
@@ -363,6 +352,7 @@ const Footer = () => {
                       <a href="https://www.facebook.com/tourma.line.534540" target="_blank" rel="noopener noreferrer" className="hover:text-brand-purple transition-colors"><FacebookIcon className="w-6 h-6"/></a>
                  </div>
                 <p className="text-sm text-gray-400">Tourmaline, 76540 Gerponville | Siret : 93116533600013</p>
+                <p className="text-sm text-gray-400 mt-1">Intervention à domicile sur le secteur Gerponville, Valmont, Fécamp.</p>
                 <p className="text-sm text-gray-400 mt-1">Merci de votre visite.</p>
                  <a href="https://www.google.com/search?sca_esv=b1b93c191aaa47d3&sxsrf=AE3TifPYZY4KkqMWnY5gZGk3n-vOMMPhAg:1762975647931&q=Tourma-Line+Line+Simon+Num%C3%A9rologie+Cartomancie+et+Soins+%C3%A9nerg%C3%A9tiques+LAHOCHI&si=AMgyJEs9DArPE9xmb5yVYVjpG4jqWDEKSIpCRSjmm88XZWnGNboYSYaVnHI8Cn4IKluKbWRXYq-r0WYB-1748A7mqdXrZUulOMOySxFRN-q-rlVeZj6ypC5qIaStj2zXV6nogPxZwVFtXxigmA-dqJHtBVRMAectv_K5Xo0VYmewelH3do5M-dAjT6PwxvoziBwKDnAPsX9naiebeBv7x2A75ft3kXZHUg%3D%D&sa=X&ved=2ahUKExiFifiJrO2QAxW0NvsDHRiNLegQ_coHegQIKRAB" target="_blank" rel="noopener noreferrer" className="text-sm text-gray-400 hover:text-brand-purple transition-colors mt-2 inline-block">
                     Voir sur Google Business
@@ -391,7 +381,7 @@ const Chatbot = () => {
   2.  **Soin énergétique LAHOCHI (50€):** A high-frequency energy healing method, stronger than Reiki. It rebalances chakras, releases blockages, reduces stress, and promotes deep physical and emotional well-being. (Available: at home, remotely).
 - **Locations & How Sessions Work:**
   - **À distance (Remote):** Flexible sessions via Phone, Video call, or Messenger.
-  - **À domicile (At home):** At "Résidence Les Peupliers, 76540 Gerponville" and surrounding areas.
+  - **À domicile (At home):** Serving the area around Gerponville, including towns like Valmont and Fécamp.
   - **Au cabinet (At the cabinet):** A serene space at "161 rue Souveraine, 76450 Saint-Riquier-ès-Plains". By appointment only.
 - **Client Testimonials (To be used naturally in conversation):**
   - **PATRICIA FATRAS:** "J’ai eu la chance de croiser Touma-Line... elle a su me décrire avec une justesse..."
