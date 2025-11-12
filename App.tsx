@@ -163,7 +163,9 @@ const Header = () => {
     return (
         <header className="bg-brand-dark bg-opacity-50 text-white p-4 fixed top-0 left-0 right-0 z-50 backdrop-blur-sm transition-all duration-300">
             <div className="container mx-auto flex justify-between items-center">
-                <h1 className="text-2xl font-display font-bold text-brand-lilas">TOURMA-LINE</h1>
+                 <a href="#accueil" onClick={handleNavClick} className="text-3xl font-display font-bold">
+                    TOURMA-LINE
+                </a>
                 <nav className="hidden md:flex space-x-6">
                     <a href="#accueil" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Accueil</a>
                     <a href="#services" onClick={handleNavClick} className="hover:text-brand-purple transition-colors">Mes Services</a>
@@ -455,7 +457,7 @@ const Pricing = () => {
                         <div className="bg-white p-8 rounded-2xl shadow-lg text-brand-dark transition-all duration-300 hover:scale-105 hover:shadow-2xl">
                             <h3 className="text-2xl font-display mb-4">Soin énergétique LAHOCHI</h3>
                             <p className="text-5xl font-bold mb-4">50€</p>
-                            <p className="text-gray-700">À distance ou à domicile</p>
+                            <p className="text-gray-700">À distance ou en cabinet</p>
                         </div>
                     </div>
                 </div>
@@ -538,7 +540,7 @@ const Footer = () => {
     return (
         <footer className="bg-brand-dark text-white py-8">
             <div className="container mx-auto text-center">
-                 <h3 className="text-xl font-display text-brand-lilas mb-2">TOURMA-LINE</h3>
+                 <h3 className="text-3xl font-display font-bold mb-4">TOURMA-LINE</h3>
                 <p className="text-brand-lilas mb-4">"Pour vous guider vers la clarté, la confiance et l'harmonie. ✨"</p>
                  <div className="flex justify-center space-x-4 mb-4">
                       <a href="https://www.facebook.com/tourma.line.534540" target="_blank" rel="noopener noreferrer" className="hover:text-brand-purple transition-colors"><FacebookIcon className="w-6 h-6"/></a>
