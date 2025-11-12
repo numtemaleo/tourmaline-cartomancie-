@@ -1,4 +1,5 @@
 
+
 import React, { useState, useRef, useEffect } from 'react';
 import { GoogleGenAI } from '@google/genai';
 
@@ -7,6 +8,7 @@ type AnimateOnScrollProps = {
     animationClass?: string;
     threshold?: number;
     delay?: number;
+    children?: React.ReactNode;
 };
 // FIX: Changed component to be of type React.FC to correctly handle React-specific props like `key`.
 const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({ children, animationClass = 'animate-fadeInUp', threshold = 0.1, delay = 0 }) => {
@@ -75,7 +77,7 @@ const FacebookIcon = ({ className }: { className?: string }) => (
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 12c0 1.74.44 3.37 1.23 4.78L2 22l5.33-1.38c1.37.71 2.93 1.11 4.58 1.11h.01c5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.82-9.91-9.82zM17.2 15.25c-.21 0-.46-.07-.72-.18-.54-.22-1.04-.54-1.2-.72-.15-.17-.28-.36-.42-.53-.13-.17-.28-.34-.42-.51s-.29-.34-.44-.51c-.15-.17-.31-.34-.46-.51-.15-.17-.32-.34-.48-.51s-.32-.34-.49-.51c-.17-.17-.35-.34-.52-.51l-.14-.14s-.14-.14-.28-.28c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42l-.14-.14c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-1.12-1.12-2.24-2.24-3.36-3.36C3.06 6.37 4.1 5.25 4.1 5.25s1.12 1.12 1.12 1.12l.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42.28.28.42.42l.14.14s.14.14.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42l.14.14c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42c.15.15.29.3.44.44s.29.3.44.44l.14.14c.15.15.29.3.44.44s.29.3.44.44l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.1-4.1-3.3-3.3-1.42 1.42z" />
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 12c0 1.74.44 3.37 1.23 4.78L2 22l5.33-1.38c1.37.71 2.93 1.11 4.58 1.11h.01c5.46 0 9.91-4.45 9.91-9.91 0-5.46-4.45-9.82-9.91-9.82zM17.2 15.25c-.21 0-.46-.07-.72-.18-.54-.22-1.04-.54-1.2-.72-.15-.17-.28-.36-.42-.53-.13-.17-.28-.34-.42-.51s-.29-.34-.44-.51c-.15-.17-.31-.34-.46-.51-.15-.17-.32-.34-.48-.51s-.32-.34-.49-.51c-.17-.17-.35-.34-.52-.51l-.14-.14s-.14-.14-.28-.28c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42l-.14-.14c-.14-.14-.28-.28-.42-.42s-.28-.28-.42-.42-.28-.28-.42-.42c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-.28-.28-.56-.56-.84-.84s-.56-.56-.84-.84l-.28-.28c-1.12-1.12-2.24-2.24-3.36-3.36C3.06 6.37 4.1 5.25 4.1 5.25s1.12 1.12 1.12 1.12l.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42.28.28.42.42l.14.14s.14.14.28.28c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42l.14.14c.14.14.28.28.42.42s.28.28.42.42.28.28.42.42c.15.15.29.3.44.44s.29.3.44.44l.14.14c.15.15.29.3.44.44s.29.3.44.44l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.28.28.56.56.84.84s.56.56.84.84l.28.28c.28.28.56.56.84.84s.56.56.84.84l.28.28c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.14.14c.09.09.18.18.27.27s.18.18.27.27l.1-4.1-3.3-3.3-1.42 1.42z" />
     </svg>
 );
 
@@ -253,8 +255,22 @@ const Benefits = () => {
     );
 };
 
+// FIX: Defined interfaces for tab data to ensure type safety for optional properties like 'features'.
+interface TabFeature {
+    title: string;
+    description: string;
+}
+
+interface TabData {
+    title: string;
+    icon: React.FC<{ className?: string }>;
+    contentTitle: string;
+    content: string;
+    features?: TabFeature[];
+}
+
 const Services = ({ activeTab, setActiveTab }: { activeTab: string; setActiveTab: (tab: string) => void; }) => {
-    const tabs = {
+    const tabs: Record<string, TabData> = {
         numerology: {
             title: "Numérologie",
             icon: NumerologyIcon,
@@ -272,15 +288,17 @@ const Services = ({ activeTab, setActiveTab }: { activeTab: string; setActiveTab
             icon: LahochiIcon,
             contentTitle: "Soin Énergétique LAHOCHI - Une puissante vague de guérison",
             content: "Le LAHOCHI est une méthode de soins énergétiques qui s'apparente à une forme de guérison par l'énergie, souvent comparée au Reiki, bien qu'elle soit considérée comme plus puissante et plus rapide. Son nom, 'LahoChi', fait référence à l’énergie divine universelle qui est canalisée à travers les mains du praticien pour être transmise à la personne recevant le soin. Le Lahochi utilise des fréquences vibratoires élevées pour rééquilibrer les énergies du corps et favoriser la guérison physique, émotionnelle et spirituelle.",
-            features: [
-                "Transmission d’énergie par les mains : Je canalise l’énergie à travers mes mains en les plaçant sur ou près du corps du receveur.",
-                "Soin holistique : Le LAHOCHI agit sur les différents niveaux de l’être humain : physique, émotionnel, mental et spirituel.",
-                "Équilibrage des chakras : Le Lahochi aide à équilibrer les chakras du corps, favorisant ainsi un flux énergétique harmonieux.",
-                "Vibration élevée : Le LAHOCHI est réputé pour être un soin à hautes fréquences vibratoires ce qui permet des résultats rapides et profonds.",
-                "Soin à distance : Cette méthode peut aussi être pratiquée à distance, ce qui la rend accessible à toute personne, peu importe sa localisation."
+             features: [
+                { title: "Transmission d’énergie par les mains", description: "Je canalise l’énergie à travers mes mains en les plaçant sur ou près du corps du receveur." },
+                { title: "Soin holistique", description: "Le LAHOCHI agit sur les différents niveaux de l’être humain : physique, émotionnel, mental et spirituel." },
+                { title: "Équilibrage des chakras", description: "Le Lahochi aide à équilibrer les chakras du corps, favorisant ainsi un flux énergétique harmonieux." },
+                { title: "Vibration élevée", description: "Le LAHOCHI est réputé pour être un soin à hautes fréquences vibratoires ce qui permet des résultats rapides et profonds." },
+                { title: "Soin à distance", description: "Cette méthode peut aussi être pratiquée à distance, ce qui la rend accessible à toute personne, peu importe sa localisation." }
             ]
         }
     };
+
+    const currentTab = tabs[activeTab as keyof typeof tabs];
 
     return (
         <section id="services" className="py-20 bg-white">
@@ -288,23 +306,25 @@ const Services = ({ activeTab, setActiveTab }: { activeTab: string; setActiveTab
                 <div className="container mx-auto text-center px-6">
                     <h2 className="text-4xl font-display text-brand-dark mb-12">Mes outils pour vous guider.</h2>
                     <div className="flex justify-center mb-8 border-b-2 border-brand-lilas">
-                        {Object.keys(tabs).map(tabKey => (
+                        {Object.entries(tabs).map(([tabKey, tabData]) => (
                             <button key={tabKey} onClick={() => setActiveTab(tabKey)} className={`flex items-center space-x-2 px-6 py-3 font-display text-xl transition-colors duration-300 ${activeTab === tabKey ? 'border-b-4 border-brand-purple text-brand-purple' : 'text-gray-500 hover:text-brand-dark'}`}>
-                               {React.createElement(tabs[tabKey].icon, { className: "w-6 h-6" })}
-                               <span>{tabs[tabKey].title}</span>
+                               {React.createElement(tabData.icon, { className: "w-6 h-6" })}
+                               <span>{tabData.title}</span>
                             </button>
                         ))}
                     </div>
                     <div className="max-w-4xl mx-auto text-left p-8 bg-brand-lilas rounded-2xl shadow-inner transition-all duration-500">
                         <AnimateOnScroll key={activeTab}>
-                            <h3 className="text-3xl font-display text-brand-dark mb-4">{tabs[activeTab].contentTitle}</h3>
-                            <p className="text-gray-700 leading-relaxed">{tabs[activeTab].content}</p>
-                             {tabs[activeTab].features && (
+                            <h3 className="text-3xl font-display text-brand-dark mb-4">{currentTab.contentTitle}</h3>
+                            <p className="text-gray-700 leading-relaxed">{currentTab.content}</p>
+                             {currentTab.features && (
                                 <ul className="mt-6 space-y-4">
-                                    {tabs[activeTab].features.map((feature, index) => (
+                                    {currentTab.features.map((feature, index) => (
                                         <li key={index} className="flex items-start space-x-3">
                                             <SparklesIcon className="w-5 h-5 text-brand-purple flex-shrink-0 mt-1" />
-                                            <p className="text-gray-700"><span className="font-semibold">{feature.split(':')[0]}:</span>{feature.split(':')[1]}</p>
+                                            <p className="text-gray-700">
+                                                <strong className="font-semibold text-brand-dark">{feature.title}:</strong> {feature.description}
+                                            </p>
                                         </li>
                                     ))}
                                 </ul>
@@ -612,7 +632,6 @@ const Chatbot = () => {
         try {
             const ai = new GoogleGenAI({ apiKey: process.env.API_KEY as string });
             const model = isThinkingMode ? 'gemini-2.5-pro' : 'gemini-2.5-flash';
-            const config = isThinkingMode ? { thinkingConfig: { thinkingBudget: 32768 } } : {};
             
             const history = messages.map(m => ({ role: m.role, parts: [{ text: m.text }] }));
             if (history.length > 0 && history[0].role === 'model') {
@@ -626,8 +645,8 @@ const Chatbot = () => {
                     { role: 'user', parts: [{ text: input }] }
                 ],
                 config: {
-                    ...config,
                     systemInstruction: systemInstruction,
+                    ...(isThinkingMode ? { thinkingConfig: { thinkingBudget: 32768 } } : {}),
                 },
             });
 
