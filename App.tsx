@@ -1,6 +1,7 @@
 
 
 
+
 import React, { useState, useRef, useEffect } from 'react';
 import { GoogleGenAI } from '@google/genai';
 
@@ -165,7 +166,7 @@ const Header = ({ onNavClick }: { onNavClick: NavClickHandler }) => {
                     <a href="#formules" onClick={onNavClick} className="hover:text-brand-purple transition-colors">Formules</a>
                     <a href="#bienfaits" onClick={onNavClick} className="hover:text-brand-purple transition-colors">Bienfaits</a>
                     <a href="#tarifs" onClick={onNavClick} className="hover:text-brand-purple transition-colors">Tarifs</a>
-                    <a href="#rendezvous" onClick={onNavClick} className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-2 px-4 rounded-full transition-colors">Prendre RDV</a>
+                    <a href="#rendezvous" onClick={onNavClick} className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-2 px-4 rounded-full transition-all duration-300 transform active:scale-95">Prendre RDV</a>
                 </nav>
             </div>
         </header>
@@ -179,7 +180,7 @@ const Hero = ({ onNavClick }: { onNavClick: NavClickHandler }) => {
             <div className="relative z-10 p-4 animate-fadeInUp">
                 <h2 className="text-5xl md:text-7xl font-display font-bold leading-tight mb-4 text-shadow-lg">Révélez votre potentiel et illuminez votre chemin de vie.</h2>
                 <p className="text-lg md:text-2xl mb-8 max-w-3xl mx-auto font-light">Guidance personnalisée par la numérologie, la cartomancie et les soins énergétiques Lahochi.</p>
-                <a href="#formules" onClick={onNavClick} className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 animate-pulse inline-block">Découvrir mes accompagnements</a>
+                <a href="#formules" onClick={onNavClick} className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 active:scale-95 animate-pulse inline-block">Découvrir mes accompagnements</a>
             </div>
         </section>
     );
@@ -506,7 +507,7 @@ const Testimonials = () => {
                             </div>
                         ))}
                     </div>
-                     <a href="https://www.google.com/search?q=Tourma-Line%20Line%20Simon%20Num%C3%A9rologie%20Cartomancie%20et%20Soins%20%C3%A9nerg%C3%A9tiques%20LAHOCHI%20Avis&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDU2NTcyNTCyNDQwsbAwNzKzsNzAyPiKMSQkv7QoN1HXJzMvVQFMBGfm5ucp-JXmHl5ZlJ-Tn56ZquCcWFSSn5uYlwxkp5YoBOdn5hUrHF6Zl1qUfnhlSWZhaWqxgo-jh7-zh6eCY1lm8SJWmhgLAITx8bLJAAAA&rldimm=15357250291048872689&tbm=lcl&cs=1&hl=fr&sa=X&ved=0CAYQ5foLahcKEwiwsdzjoO2QAxUAAAAAHQAAAAAQCQ&biw=1014&bih=656&dpr=1#lkt=LocalPoiReviews&arid=ChdDSUhNMG9nS0VNTEV0NktUM19fQ2hnRRAB" target="_blank" rel="noopener noreferrer" className="mt-8 inline-block bg-brand-purple hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105">
+                     <a href="https://www.google.com/search?q=Tourma-Line%20Line%20Simon%20Num%C3%A9rologie%20Cartomancie%20et%20Soins%20%C3%A9nerg%C3%A9tiques%20LAHOCHI%20Avis&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDU2NTcyNTCyNDQwsbAwNzKzsNzAyPiKMSQkv7QoN1HXJzMvVQFMBGfm5ucp-JXmHl5ZlJ-Tn56ZquCcWFSSn5uYlwxkp5YoBOdn5hUrHF6Zl1qUfnhlSWZhaWqxgo-jh7-zh6eCY1lm8SJWmhgLAITx8bLJAAAA&rldimm=15357250291048872689&tbm=lcl&cs=1&hl=fr&sa=X&ved=0CAYQ5foLahcKEwiwsdzjoO2QAxUAAAAAHQAAAAAQCQ&biw=1014&bih=656&dpr=1#lkt=LocalPoiReviews&arid=ChdDSUhNMG9nS0VNTEV0NktUM19fQ2hnRRAB" target="_blank" rel="noopener noreferrer" className="mt-8 inline-block bg-brand-purple hover:bg-opacity-80 text-white font-bold py-3 px-8 rounded-full text-lg transition-transform transform hover:scale-105 active:scale-95">
                         Lire plus d'avis sur Google
                     </a>
                 </div>
@@ -524,7 +525,7 @@ const Booking = () => {
                     <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-8">
                         Je suis là pour vous offrir des réponses et un accompagnement personnalisé. Contactez-moi dès maintenant pour réserver votre séance ! Je serai ravie de vous accompagner sur votre chemin de vie avec professionnalisme et bienveillance.
                     </p>
-                    <a href="https://www.facebook.com/tourma.line.534540" target="_blank" rel="noopener noreferrer" className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-4 px-10 rounded-full text-xl transition-transform transform hover:scale-105 inline-block animate-pulse">
+                    <a href="https://www.facebook.com/tourma.line.534540" target="_blank" rel="noopener noreferrer" className="bg-brand-purple hover:bg-opacity-80 text-white font-bold py-4 px-10 rounded-full text-xl transition-transform transform hover:scale-105 active:scale-95 inline-block animate-pulse">
                         Réserver ma séance
                     </a>
                     <div className="mt-10">
@@ -533,10 +534,10 @@ const Booking = () => {
                             <a href="tel:0649653186" className="hover:underline">06 49 65 31 86</a> | <a href="mailto:line.simon.ls@gmail.com" className="hover:underline">line.simon.ls@gmail.com</a>
                         </p>
                         <div className="flex justify-center space-x-6 mt-4">
-                            <a href="https://www.facebook.com/tourma.line.534540" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-brand-purple transition-colors">
+                            <a href="https://www.facebook.com/tourma.line.534540" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-brand-purple transition-all duration-300 transform hover:scale-110 active:scale-95">
                                 <FacebookIcon className="w-8 h-8"/>
                             </a>
-                            <a href="https://wa.me/qr/NZDHZRB3ZW52B1" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-brand-purple transition-colors">
+                            <a href="https://wa.me/qr/NZDHZRB3ZW52B1" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-brand-purple transition-all duration-300 transform hover:scale-110 active:scale-95">
                                 <WhatsAppIcon className="w-8 h-8" />
                             </a>
                         </div>
@@ -554,7 +555,7 @@ const Footer = () => {
                  <h3 className="text-3xl font-display font-bold mb-4">TOURMA-LINE</h3>
                 <p className="text-brand-lilas mb-4">"Pour vous guider vers la clarté, la confiance et l'harmonie. ✨"</p>
                  <div className="flex justify-center space-x-4 mb-4">
-                      <a href="https://www.facebook.com/tourma.line.534540" target="_blank" rel="noopener noreferrer" className="hover:text-brand-purple transition-colors"><FacebookIcon className="w-6 h-6"/></a>
+                      <a href="https://www.facebook.com/tourma.line.534540" target="_blank" rel="noopener noreferrer" className="hover:text-brand-purple transition-all duration-300 transform hover:scale-110 active:scale-95"><FacebookIcon className="w-6 h-6"/></a>
                  </div>
                 <p className="text-sm text-gray-400">Tourmaline, 76540 Gerponville | Siret : 93116533600013</p>
                 <p className="text-sm text-gray-400 mt-1">Intervention à domicile sur le secteur Gerponville, Valmont, Fécamp, Cany-Barville, Ourville-en-Caux.</p>
@@ -658,7 +659,7 @@ const Chatbot = () => {
         <>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="fixed bottom-6 right-6 bg-brand-purple text-white p-4 rounded-full shadow-lg hover:bg-opacity-80 transition-transform transform hover:scale-110 z-50"
+                className="fixed bottom-6 right-6 bg-brand-purple text-white p-4 rounded-full shadow-lg hover:bg-opacity-80 transition-transform transform hover:scale-110 active:scale-95 z-50 animate-bob"
                 aria-label="Ouvrir le chat"
             >
                 {isOpen ? <CloseIcon className="w-8 h-8" /> : <ChatBubbleIcon className="w-8 h-8" />}
